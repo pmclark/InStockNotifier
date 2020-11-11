@@ -11,6 +11,8 @@ Webpage list in sites.json can be modified for use with any product (currently t
 
 By default, a browser window will open when an item is found to be in stock. If you wish to also receive discord notifications add your discord webhook to the .env file.
 
+1. Clone or download the repository and navigate to the folder from the command prompt or anaconda prompt (make sure you have Python 3)
+2. From a conda environment with the necessary dependencies found in notifier.py installed, run the following:
 ```
 python notifier.py
 ```
