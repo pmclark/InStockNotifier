@@ -1,0 +1,23 @@
+[ 
+  {
+    "url": "https://www.newegg.com/amd-ryzen-9-5900x/p/N82E16819113664",
+    "keyword": "Add to cart",
+    "alert": true,
+    "name": "Newegg Ryzen 5900x",
+    "enabled": true
+  },
+  {
+    "url": "https://www.amazon.com/dp/B08164VTWH",
+    "keyword": "Add to cart",
+    "alert": true,
+    "name": "Amazon Ryzen 5900x",
+    "enabled": true
+  },
+  {
+    "url": "https://www.newegg.com/amd-ryzen-9-3900x/p/N82E16819113103?",
+    "keyword": "Add to cart",
+    "alert": true,
+    "name": "TEST",
+    "enabled": false
+  }
+]
