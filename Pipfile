@@ -4,9 +4,8 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-dotenv = "*"
 requests = "*"
-win10toast = "*"
+python-dotenv = "*"
 
 [dev-packages]
 
