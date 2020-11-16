@@ -18,6 +18,13 @@
     "keyword": "Add to cart",
     "alert": true,
     "name": "TEST",
+    "enabled": false
+  },
+  {
+    "url": "",
+    "keyword": "Add to cart",
+    "alert": true,
+    "name": "Paul-PC Product",
     "enabled": true
   }
 ]
