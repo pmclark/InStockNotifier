@@ -4,7 +4,14 @@
     "keyword": "Add to cart",
     "alert": true,
     "name": "Newegg Ryzen 5900x",
-    "enabled": true
+    "enabled": false
+  },
+  {
+    "url": "https://www.newegg.com/amd-ryzen-9-3900x/p/N82E16819113103?",
+    "keyword": "Add to cart",
+    "alert": true,
+    "name": "TEST",
+    "enabled": false
   },
   {
     "url": "https://www.newegg.com/amd-ryzen-9-3900x/p/N82E16819113103?",
