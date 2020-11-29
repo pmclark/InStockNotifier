@@ -1,14 +1,15 @@
 import json
 import platform
 import random
-import webbrowser
-from datetime import datetime, time
-from os import path, getenv, system
-from time import sleep
-from urllib.request import urlopen, Request
 import sys
+import webbrowser
+from datetime import datetime
+from os import getenv, system
+from time import sleep
+
 import requests
 from dotenv import load_dotenv
+from selenium import webdriver
 
 platform = platform.system()
 PLT_WIN = "Windows"
@@ -81,10 +82,14 @@ def discord_notification(product, url):
 def urllib_get(url):
     # for regular sites
     # Fake a Firefox client
-    request = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    page = urlopen(request, timeout=30)
-    html_bytes = page.read()
-    html = html_bytes.decode("utf-8")
+    ## request = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    ## page = urlopen(request, timeout=30)
+    ## html_bytes = page.read()
+    ## html = html_bytes.decode("utf-8")
+    driver = webdriver.Chrome(executable_path='chromedriver')
+    driver.get(url)
+    html = driver.page_source
+    driver.close()
     return html
 
 
