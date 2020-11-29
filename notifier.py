@@ -86,11 +86,17 @@ def urllib_get(url):
     ## page = urlopen(request, timeout=30)
     ## html_bytes = page.read()
     ## html = html_bytes.decode("utf-8")
-    driver = webdriver.Chrome(executable_path='/home/ubuntu/git/InStockNotifier/chromedriver')
-    driver.get(url)
-    html = driver.page_source
-    driver.close()
-    return html
+    if platform == PLT_LIN:
+        chromeOptions = webdriver.ChromeOptions()
+        chromeOptions.add_argument("--disable-dev-shm-usage")
+        driver = webdriver.Chrome(executable_path='/home/ubuntu/git/InStockNotifier/chromedriver',
+                                  chrome_options=chromeOptions)
+        driver.get(url)
+        html = driver.page_source
+        driver.close()
+        return html
+    else:
+        return ""
 
 
 def is_test():
