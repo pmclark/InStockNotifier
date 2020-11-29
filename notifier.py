@@ -86,7 +86,7 @@ def urllib_get(url):
     ## page = urlopen(request, timeout=30)
     ## html_bytes = page.read()
     ## html = html_bytes.decode("utf-8")
-    driver = webdriver.Chrome(executable_path='chromedriver')
+    driver = webdriver.Chrome(executable_path='/home/ubuntu/git/InStockNotifier/chromedriver')
     driver.get(url)
     html = driver.page_source
     driver.close()
