@@ -9,6 +9,7 @@ from urllib.request import urlopen, Request
 import sys
 import requests
 from dotenv import load_dotenv
+from selenium import webdriver
 
 platform = platform.system()
 PLT_WIN = "Windows"
@@ -81,12 +82,16 @@ def discord_notification(product, url):
 def urllib_get(url):
     # for regular sites
     # Fake a Firefox client
-    request = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    page = urlopen(request, timeout=30)
-    html_bytes = page.read()
-    html = html_bytes.decode("utf-8")
+    ## request = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    ## page = urlopen(request, timeout=30)
+    ## html_bytes = page.read()
+    ## html = html_bytes.decode("utf-8")
+    ## return html
+    driver = webdriver.Chrome(executable_path='chromedriver.exe')
+    driver.get(url)
+    html = driver.page_source
+    driver.close()
     return html
-
 
 def is_test():
     try:

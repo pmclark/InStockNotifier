@@ -4,14 +4,14 @@
     "keyword": "Add to cart",
     "alert": true,
     "name": "PNY GeForce RTX 3070 8GB",
-    "enabled": false
+    "enabled": true
   },
   {
     "url": "https://www.bestbuy.com/site/msi-geforce-rtx-3070-ventus-3x-oc-bv-8gb-gddr6-pci-express-4-0-graphics-card-black/6438278.p",
-    "keyword": "Add to cart",
+    "keyword": "</svg>Add to Cart",
     "alert": true,
     "name": "MSI - GeForce RTX 3070 VENTUS",
-    "enabled": false
+    "enabled": true
   },
   {
     "url": "https://www.microcenter.com/product/631321/asus-geforce-rtx-3070-ko-overclocked-dual-fan-8gb-gddr6-pcie-40-graphics-card?storeid=191",
@@ -19,6 +19,13 @@
     "alert": true,
     "name": "ASUS GeForce RTX 3070 KO Overclocked",
     "enabled": true
+  },
+  {
+    "url": "https://www.amazon.com/MSI-GeForce-256-Bit-Architecture-Graphics/dp/B08KWLMZV4",
+    "keyword": "in stock</span> at Overland Park Store",
+    "alert": true,
+    "name": "MSI Gaming GeForce RTX 3070 8GB",
+    "enabled": false
   },
   {
     "url": "https://www.newegg.com/amd-ryzen-9-5900x/p/N82E16819113664",
