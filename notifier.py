@@ -88,9 +88,10 @@ def urllib_get(url):
     ## html = html_bytes.decode("utf-8")
     if platform == PLT_LIN:
         chromeOptions = webdriver.ChromeOptions()
-        chromeOptions.add_argument("--disable-dev-shm-usage")
+        chromeOptions.add_argument("--no-sandbox")
+        chromeOptions.add_arguments("--disable-dev-shm-usage")
         driver = webdriver.Chrome(executable_path='/home/ubuntu/git/InStockNotifier/chromedriver',
-                                  chrome_options=chromeOptions)
+                                  options=chromeOptions)
         driver.get(url)
         html = driver.page_source
         driver.close()
