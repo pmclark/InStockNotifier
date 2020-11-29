@@ -94,7 +94,7 @@ def urllib_get(url):
         chromeOptions.add_argument("--disable-gpu")
         chromeOptions.add_argument("--disable-dev-shm-usage")
         chromeOptions.add_argument("--no-sandbox")
-        chromeOptions.add_argument("--headless")
+        # chromeOptions.add_argument("--headless")
         chromeOptions.add_argument("--remote-debugging-port=9222")
         driver = webdriver.Chrome(executable_path='/home/ubuntu/git/InStockNotifier/chromedriver',
                                   options=chromeOptions)
