@@ -87,6 +87,20 @@ def urllib_get(url):
     ## html_bytes = page.read()
     ## html = html_bytes.decode("utf-8")
     if platform == PLT_LIN:
+        # Nov 30, 2020 Status:
+        # I was having issues connecting to some sites (such as Micro Center) because I think
+        # the website can tell it isn't an actual user connecting through a web browser. This might involve changing the
+        # headers in the request, similar to what is being done in commented line 85. The best way to figure out what
+        # headers to add might be to try and echo what the chrome browser is sending vs what is being sent by
+        # the request using the urllib library (line 85) or what is being done by the headless selenium chrome
+        # webdriver on line 103. I'm also not sure if selenium allows you to add headers.
+        #
+        # I think trying to run in headless mode using the chrome web driver either adds or removes header(s) that other
+        # sites see as a non-legitimate browser. I *think* running the chrome web driver without the "--headless"
+        # argument might be causing the box to run out of memory. Running without "--headless" using the windows
+        # chromedriver works fine with Micro Center's website (not sure about Best Buy). One way to see if this is an
+        # issue might be to either run a virtual linux machine on my PC or try running the linux chromedriver on my
+        # raspberry pi(which might have more memory than the EC2 box but not sure).
         chromeOptions = webdriver.ChromeOptions()
         chromeOptions.add_argument("start-maximized")
         chromeOptions.add_argument("disable-infobars")
