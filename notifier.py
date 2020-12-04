@@ -82,21 +82,21 @@ def discord_notification(product, url):
             print("Payload delivered successfully, code {}.".format(result.status_code))
 
 def web_driver(url):
-    if platform == PLT_LIN:
-        chromeOptions = webdriver.ChromeOptions()
-        chromeOptions.add_argument("start-maximized")
-        chromeOptions.add_argument("disable-infobars")
-        chromeOptions.add_argument("--disable-extensions")
-        chromeOptions.add_argument("--disable-gpu")
-        chromeOptions.add_argument("--disable-dev-shm-usage")
-        chromeOptions.add_argument("--no-sandbox")
-        chromeOptions.add_argument("--headless")
-        chromeOptions.add_argument("--remote-debugging-port=9222")
-        driver = webdriver.Chrome(executable_path='/home/ubuntu/git/InStockNotifier/chromedriver',
+    chromeOptions = webdriver.ChromeOptions()
+    chromeOptions.add_argument("start-maximized")
+    chromeOptions.add_argument("disable-infobars")
+    chromeOptions.add_argument("--disable-extensions")
+    chromeOptions.add_argument("--disable-gpu")
+    chromeOptions.add_argument("--disable-dev-shm-usage")
+    chromeOptions.add_argument("--no-sandbox")
+    chromeOptions.add_argument("--headless")
+    chromeOptions.add_argument("--remote-debugging-port=9222")
+    driver = webdriver.Chrome(executable_path='/home/ubuntu/git/InStockNotifier/chromedriver',
                           options=chromeOptions)
-        driver.get(url)
-        html = driver.page_source
-        driver.close()
+    driver.get(url)
+    html = driver.page_source
+    driver.close()
+    return html
 
 def requests_library(url):
     headers = {
