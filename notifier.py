@@ -91,6 +91,7 @@ def requests_library(url):
         'Upgrade-Insecure-Requests': '1'
     }
     response = requests.get(url, headers=headers, timeout=30)
+    pprint(response.request.headers)
     html = response.text
     return html
 
