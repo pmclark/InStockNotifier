@@ -6,6 +6,7 @@ import webbrowser
 from datetime import datetime
 from os import getenv, system
 from time import sleep
+from urllib.request import Request, urlopen
 
 import requests
 from dotenv import load_dotenv
@@ -82,11 +83,11 @@ def discord_notification(product, url):
 def urllib_get(url):
     # for regular sites
     # Fake a Firefox client
-    ## request = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
-    ## page = urlopen(request, timeout=30)
-    ## html_bytes = page.read()
-    ## html = html_bytes.decode("utf-8")
-    if platform == PLT_LIN:
+    request = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    page = urlopen(request, timeout=30)
+    html_bytes = page.read()
+    html = html_bytes.decode("utf-8")
+    #if platform == PLT_LIN:
         # Nov 30, 2020 Status:
         # I was having issues connecting to some sites (such as Micro Center) because I think
         # the website can tell it isn't an actual user connecting through a web browser. This might involve changing the
@@ -101,23 +102,23 @@ def urllib_get(url):
         # chromedriver works fine with Micro Center's website (not sure about Best Buy). One way to see if this is an
         # issue might be to either run a virtual linux machine on my PC or try running the linux chromedriver on my
         # raspberry pi(which might have more memory than the EC2 box but not sure).
-        chromeOptions = webdriver.ChromeOptions()
-        chromeOptions.add_argument("start-maximized")
-        chromeOptions.add_argument("disable-infobars")
-        chromeOptions.add_argument("--disable-extensions")
-        chromeOptions.add_argument("--disable-gpu")
-        chromeOptions.add_argument("--disable-dev-shm-usage")
-        chromeOptions.add_argument("--no-sandbox")
-        chromeOptions.add_argument("--headless")
-        chromeOptions.add_argument("--remote-debugging-port=9222")
-        driver = webdriver.Chrome(executable_path='/home/ubuntu/git/InStockNotifier/chromedriver',
-                                  options=chromeOptions)
-        driver.get(url)
-        html = driver.page_source
-        driver.close()
+        # chromeOptions = webdriver.ChromeOptions()
+        # chromeOptions.add_argument("start-maximized")
+        # chromeOptions.add_argument("disable-infobars")
+        # chromeOptions.add_argument("--disable-extensions")
+        # chromeOptions.add_argument("--disable-gpu")
+        # chromeOptions.add_argument("--disable-dev-shm-usage")
+        # chromeOptions.add_argument("--no-sandbox")
+        # chromeOptions.add_argument("--headless")
+        # chromeOptions.add_argument("--remote-debugging-port=9222")
+        # driver = webdriver.Chrome(executable_path='/home/ubuntu/git/InStockNotifier/chromedriver',
+        #                           options=chromeOptions)
+        # driver.get(url)
+        # html = driver.page_source
+        # driver.close()
         return html
-    else:
-        return ""
+    # else:
+    #     return ""
 
 
 def is_test():
