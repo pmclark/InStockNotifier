@@ -194,8 +194,8 @@ def main():
 
                 try:
                     # html = urllib_get(site.get('url'))
-                    # html = requests_library(site.get('url'))
-                    html = web_driver(site.get('url'))
+                    html = requests_library(site.get('url'))
+                    # html = web_driver(site.get('url'))
 
                 except Exception as e:
                     print("\t\tConnection failed...")
