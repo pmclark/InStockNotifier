@@ -192,6 +192,20 @@ def main():
             if site.get('enabled'):
                 print("\tChecking {}...".format(site.get('name')))
 
+                # Dec 4, 2020 Status:
+                # I'm currently trying to get all sites working from the linux ec2 box. I've gotten all sites working
+                # using the requests library in python from windows, but everything except Best Buy works when running
+                # from the ec2 box. Mainly, all I had to change was the request header for user agent. I'm not sure why
+                # Best Buy doesn't work though, it might be because it detects the request is coming from an Amazon IP
+                # address???
+                # The chrome web driver currently works for all sites on the ec2 box but it's much slower than the
+                # requests library. Best Buy takes the longest of all sites, which I'm guessing is because their website
+                # has to much crap on a single product page. I would like to figure out how to use the requests library
+                # if at all possible. Timing is important when trying to locate if something is in stock.
+                # I could throw in the towel on the Best Buy part for now and just try to get the cron job set up with
+                # the requests library or I could try running it on my Rasp Pi or a linux virtual machine on my PC,
+                # mainly so it comes from a different ip address than the EC2 box.
+
                 try:
                     # html = urllib_get(site.get('url'))
                     html = requests_library(site.get('url'))
