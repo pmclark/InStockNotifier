@@ -5,6 +5,7 @@ import sys
 import webbrowser
 from datetime import datetime
 from os import getenv, system
+from pprint import pprint
 from time import sleep
 from urllib.request import Request, urlopen
 
@@ -79,12 +80,34 @@ def discord_notification(product, url):
         else:
             print("Payload delivered successfully, code {}.".format(result.status_code))
 
+def requests_library(url):
+    headers = {
+        'Host': 'www.bestbuy.com',
+        'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0',
+        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        'Accept-Language': 'en-US,en;q=0.5',
+        'Accept-Encoding': 'gzip, deflate, br',
+        'Connection': 'keep-alive',
+        'Upgrade-Insecure-Requests': '1'
+    }
+    response = requests.get(url, headers=headers, timeout=30)
+    html = response.text
+    return html
 
 def urllib_get(url):
     # for regular sites
     # Fake a Firefox client
-    request = Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+    request = Request(url)
+    # request.add_header('User-Agent', 'Mozilla/5.0')
+    request.add_header('Host', 'www.bestbuy.com')
+    request.add_header('User-Agent', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0')
+    request.add_header('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8')
+    request.add_header('Accept-Language', 'en-US,en;q=0.5')
+    request.add_header('Accept-Encoding', 'gzip, deflate, br')
+    request.add_header('Connection', 'keep-alive')
+    request.add_header('Upgrade-Insecure-Requests', '1')
     page = urlopen(request, timeout=30)
+    pprint(page.info())
     html_bytes = page.read()
     html = html_bytes.decode("utf-8")
     #if platform == PLT_LIN:
@@ -146,8 +169,9 @@ def main():
                 print("\tChecking {}...".format(site.get('name')))
 
                 try:
-                    html = urllib_get(site.get('url'))
-                    
+                    # html = urllib_get(site.get('url'))
+                    html = requests_library(site.get('url'))
+
                 except Exception as e:
                     print("\t\tConnection failed...")
                     print("\t\t{}".format(e))
