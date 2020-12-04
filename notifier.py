@@ -11,6 +11,7 @@ from urllib.request import Request, urlopen
 
 import requests
 from dotenv import load_dotenv
+from requests import Session
 from selenium import webdriver
 
 platform = platform.system()
@@ -82,16 +83,21 @@ def discord_notification(product, url):
 
 def requests_library(url):
     headers = {
-        'Host': 'www.bestbuy.com',
+        # 'Host': 'www.bestbuy.com',
         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:83.0) Gecko/20100101 Firefox/83.0',
-        'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
-        'Accept-Language': 'en-US,en;q=0.5',
-        'Accept-Encoding': 'gzip, deflate, br',
-        'Connection': 'keep-alive',
-        'Upgrade-Insecure-Requests': '1'
+        #'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+        #'Accept-Language': 'en-US,en;q=0.5',
+        #'Accept-Encoding': 'gzip, deflate, br',
+        # 'Connection': 'keep-alive',
+        #'Upgrade-Insecure-Requests': '1'
     }
-    response = requests.get(url, headers=headers, timeout=30)
-    pprint(response.request.headers)
+    s = Session()
+    request = requests.Request('GET', url, headers=headers)
+    prepared_request = s.prepare_request(request)
+    # response = requests.get(url, headers=headers, timeout=30)
+    pprint(s.headers)
+    response = s.send(prepared_request, timeout=30)
+    # pprint(response.request.headers)
     html = response.text
     return html
 
