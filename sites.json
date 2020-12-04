@@ -11,28 +11,28 @@
     "keyword": "</svg>Add to Cart</button>",
     "alert": true,
     "name": "MSI - GeForce RTX 3070 VENTUS",
-    "enabled": true
+    "enabled": false
   },
   {
     "url": "https://www.bestbuy.com/site/pny-nvidia-geforce-gt-1030-2gb-gddr5-pci-express-3-0-graphics-card-black/5901353.p?skuId=5901353",
     "keyword": "</svg>Add to Cart</button>",
     "alert": true,
     "name": "PNY - NVIDIA GeForce GT 1030 2GB",
-    "enabled": true
+    "enabled": false
   },
   {
     "url": "https://www.microcenter.com/product/631321/asus-geforce-rtx-3070-ko-overclocked-dual-fan-8gb-gddr6-pcie-40-graphics-card?storeid=191",
     "keyword": "in stock</span> at Overland Park Store",
     "alert": true,
     "name": "ASUS GeForce RTX 3070 KO Overclocked",
-    "enabled": false
+    "enabled": true
   },
   {
     "url": "https://www.microcenter.com/product/480789/asus-geforce-gt-1030-phoenix-overclocked-single-fan-2gb-gddr5-pcie-30-graphics-card?storeid=191",
     "keyword": "in stock</span> at Overland Park Store",
     "alert": true,
     "name": "ASUS GeForce GT 1030 Phoenix Overclocked",
-    "enabled": false
+    "enabled": true
   },
   {
     "url": "https://www.newegg.com/amd-ryzen-9-5900x/p/N82E16819113664",

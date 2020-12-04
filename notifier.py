@@ -81,6 +81,23 @@ def discord_notification(product, url):
         else:
             print("Payload delivered successfully, code {}.".format(result.status_code))
 
+def web_driver(url):
+    if platform == PLT_LIN:
+        chromeOptions = webdriver.ChromeOptions()
+        chromeOptions.add_argument("start-maximized")
+        chromeOptions.add_argument("disable-infobars")
+        chromeOptions.add_argument("--disable-extensions")
+        chromeOptions.add_argument("--disable-gpu")
+        chromeOptions.add_argument("--disable-dev-shm-usage")
+        chromeOptions.add_argument("--no-sandbox")
+        chromeOptions.add_argument("--headless")
+        chromeOptions.add_argument("--remote-debugging-port=9222")
+        driver = webdriver.Chrome(executable_path='/home/ubuntu/git/InStockNotifier/chromedriver',
+                          options=chromeOptions)
+        driver.get(url)
+        html = driver.page_source
+        driver.close()
+
 def requests_library(url):
     headers = {
         # 'Host': 'www.bestbuy.com',
@@ -91,12 +108,12 @@ def requests_library(url):
         # 'Connection': 'keep-alive',
         #'Upgrade-Insecure-Requests': '1'
     }
-    s = Session()
-    request = requests.Request('GET', url, headers=headers)
-    prepared_request = s.prepare_request(request)
-    # response = requests.get(url, headers=headers, timeout=30)
-    pprint(s.headers)
-    response = s.send(prepared_request, timeout=30)
+    # s = Session()
+    # request = requests.Request('GET', url, headers=headers)
+    # prepared_request = s.prepare_request(request)
+    response = requests.get(url, headers=headers, timeout=30)
+    # pprint(prepared_request)
+    # response = s.send(prepared_request, timeout=30)
     # pprint(response.request.headers)
     html = response.text
     return html
@@ -177,7 +194,8 @@ def main():
 
                 try:
                     # html = urllib_get(site.get('url'))
-                    html = requests_library(site.get('url'))
+                    # html = requests_library(site.get('url'))
+                    web_driver(site.get('url'))
 
                 except Exception as e:
                     print("\t\tConnection failed...")
