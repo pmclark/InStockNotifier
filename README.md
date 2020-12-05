@@ -1,4 +1,4 @@
-<span style="color:red;font-size:18pt;text-decoration:underline">See Changes.md for current project status</span>
+# See Changes.md for current project status
 
 # InStockNotifier
 
