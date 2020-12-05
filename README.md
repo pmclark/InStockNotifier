@@ -1,3 +1,5 @@
+<span style="color:red;font-size:18pt;text-decoration:underline">See Changes.md for current project status</span>
+
 # InStockNotifier
 
 Simple python script to alert when Ryzen 5900x is in stock.
